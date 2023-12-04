@@ -1,0 +1,15 @@
+@AbapCatalog.sqlViewName: 'ZCKDEMOJOIN_1'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Demo join'
+define view ZCK_DEMO_JOIN_01
+  as select from snwd_so
+    inner join   snwd_employees on snwd_so.created_by = snwd_employees.node_key
+{
+  snwd_so.so_id,
+  snwd_so.gross_amount,
+  snwd_so.currency_code,
+  snwd_employees.first_name,
+  snwd_employees.last_name
+}
